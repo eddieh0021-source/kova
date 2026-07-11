@@ -1,0 +1,64 @@
+---
+title: "Connect the PRC API for Live Map & Player Data"
+sidebarTitle: "PRC API"
+description: "Connect your ER:LC PRC API key to Kova Hub to stream live player positions, vehicles, and plate data onto your dispatch map in real time."
+---
+
+The PRC API is ER:LC's (Emergency Response: Liberty County) official server API. Connecting it to Kova Hub gives your dispatchers a live overhead map that updates every second — showing exactly where players are, what vehicles they're driving, and what plates are on those vehicles. Without it, your dispatch board works, but your team operates without the situational awareness the live map provides.
+
+## Prerequisites
+
+Before you connect the PRC API, make sure you have the following:
+
+- **An active Kova Hub server** — you must be an owner or admin on the server you want to configure.
+- **A PRC API key** — this key is issued by the ER:LC game server owner. If you don't own the game server, ask your server owner to generate and share the API key with you privately.
+
+<Warning>
+  Never post your PRC API key in public Discord channels, Roblox chats, or anywhere visible to people outside your staff team. Anyone with the key can query your live server data. If a key is compromised, contact your ER:LC server owner to regenerate it immediately.
+</Warning>
+
+## Connecting the PRC API
+
+<Steps>
+  <Step title="Open Manage Server → Integrations">
+    In Kova Hub, navigate to **Manage Server** in the left sidebar, then select the **Integrations** tab. You'll see a section labeled **PRC API**.
+  </Step>
+  <Step title="Paste your PRC API key">
+    Click the PRC API key input field and paste the key you received from your ER:LC game server owner.
+  </Step>
+  <Step title="Save and activate">
+    Click **Save**. Kova Hub validates the key against the PRC API and, once confirmed, activates the live map immediately. Dispatchers already on the board will see player pins appear on the map within seconds.
+  </Step>
+</Steps>
+
+<Tip>
+  Kova Hub polls the PRC API once every second. Your live map is never more than one second behind real in-game positions — fast enough to track active pursuits and coordinate scene arrivals in real time.
+</Tip>
+
+## What the live map shows
+
+Once connected, the dispatch map displays the following data pulled from the PRC API:
+
+| Data point | Details |
+|---|---|
+| **Player positions** | Real-time map pins for every player currently in the ER:LC server, labeled by their username |
+| **Vehicle data** | The make and model of the vehicle each player is occupying, updated every second |
+| **Plate numbers** | The license plate associated with each vehicle, enabling instant plate lookups from the map |
+
+All three data points refresh on every poll cycle, so the map always reflects the current state of your game server.
+
+## Disconnecting the PRC API
+
+To remove the PRC API connection — for example, when rotating a compromised key or switching game servers — follow these steps:
+
+<Steps>
+  <Step title="Open Manage Server → Integrations">
+    Navigate to **Manage Server → Integrations** and locate the **PRC API** section.
+  </Step>
+  <Step title="Clear the API key">
+    Delete the contents of the PRC API key field so it is empty.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The live map will stop updating immediately. Dispatchers will see the map pins disappear, but all other CAD features remain fully operational.
+  </Step>
+</Steps>

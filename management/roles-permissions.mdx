@@ -1,0 +1,101 @@
+---
+title: "Managing Roles and Permissions in Kova Hub"
+sidebarTitle: "Roles & Permissions"
+description: "Control what every member can see and do in your CAD with Kova Hub's per-department role system, custom roles, and Discord role sync."
+---
+
+Kova Hub uses role-based access control (RBAC) to determine what each member can see and do within your server. Roles are scoped per department, so a member who is a supervisor in your Police department can have entirely different permissions in Fire/EMS — or no access there at all. Getting your roles right from the start keeps your CAD panel clean and your data secure.
+
+<Info>
+  Discord OAuth handles identity verification — Kova Hub knows *who* a member
+  is because they log in with Discord. Kova Hub roles then control *what* that
+  member is allowed to do once they're inside your server.
+</Info>
+
+## Role levels
+
+Kova Hub has three built-in authority levels that form the backbone of every server's permission structure.
+
+| Level | Scope | What they can do |
+|---|---|---|
+| **Server Owner** | Entire server | Full access to all departments, settings, integrations, and member management |
+| **Department Admin** | One department | Manage members, roles, and CAD activity within their assigned department |
+| **Member** | One department | Access the CAD panel according to the custom role assigned to them |
+
+You can refine what members and department admins can do further by creating custom roles inside each department.
+
+## Creating custom roles
+
+Custom roles let you model your real community hierarchy — for example, Cadet, Officer, Sergeant, and Lieutenant — each with a tailored permission set.
+
+<Steps>
+  <Step title="Open department settings">
+    Go to **Manage Server**, select the department you want to configure, then
+    open the **Roles** tab.
+  </Step>
+  <Step title="Create a new role">
+    Click **Add Role**, enter a name that reflects the rank or function (for
+    example, "Patrol Officer" or "Dispatcher"), and save.
+  </Step>
+  <Step title="Set permissions">
+    Toggle on the specific permissions this role should have. Permissions are
+    applied only within the department where the role lives.
+  </Step>
+</Steps>
+
+### Example permission matrix
+
+Use this as a starting point when designing your own role structure.
+
+| Permission | Cadet | Patrol Officer | Sergeant | Department Admin |
+|---|:---:|:---:|:---:|:---:|
+| Create Call | ✓ | ✓ | ✓ | ✓ |
+| Assign Unit | | ✓ | ✓ | ✓ |
+| Issue Warrant | | | ✓ | ✓ |
+| Manage Members | | | | ✓ |
+
+<Note>
+  This table is an example. Kova Hub lets you customise every permission toggle
+  freely — you are not locked into a preset tier list.
+</Note>
+
+## Assigning roles to members
+
+Once your custom roles exist, you can assign them to any member in that department.
+
+<Steps>
+  <Step title="Go to the Members list">
+    In **Manage Server**, select the relevant department and open the
+    **Members** tab.
+  </Step>
+  <Step title="Select the member">
+    Find the member you want to update and click their name to open their
+    profile.
+  </Step>
+  <Step title="Choose a role">
+    Use the **Role** dropdown to assign the appropriate custom role. The change
+    takes effect immediately — no page refresh required.
+  </Step>
+</Steps>
+
+## Discord role sync
+
+If your community uses Discord roles to track ranks or clearances, you can mirror that structure directly into Kova Hub without manually re-assigning everyone.
+
+When Discord role sync is enabled, Kova Hub maps a Discord role to a Kova Hub role within a department. Members who already hold the mapped Discord role receive the corresponding Kova Hub permissions automatically when they log in.
+
+<Tip>
+  Discord role sync works best when your Discord hierarchy already reflects
+  your in-game rank structure. Set up your Discord roles first, then map them
+  in Kova Hub to save time on bulk assignments.
+</Tip>
+
+## Per-department access
+
+Each department operates as its own permission boundary. A member must be explicitly assigned to a department before they can access its CAD panel — there is no global membership. This means you can:
+
+- Give your Police supervisors elevated permissions without affecting your Fire/EMS panel.
+- Allow a member to serve in multiple departments simultaneously, each with a different role.
+- Restrict a probationary member to read-only access in their department while they complete training.
+
+Department admins can only manage permissions and members within the departments they administer; they cannot alter settings for other departments or server-wide configuration.

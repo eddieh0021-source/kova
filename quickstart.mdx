@@ -1,47 +1,55 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Kova Hub in Minutes"
+sidebarTitle: "Quick Start"
+description: "Follow these steps to sign in, create your server, connect the PRC API, and start dispatching with Kova Hub today."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+This guide walks you through everything you need to go from zero to a fully operational CAD system for your ER:LC community. By the end, you'll have a live dispatch board, a connected PRC API map, and a Discord audit log running — all in one session.
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+<Tip>
+  Want to see Kova Hub before you commit? Check out the interactive demo at [kovahub.app/#demo](https://kovahub.app/#demo) to explore the dispatch board and MDT without creating an account.
+</Tip>
 
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+## Steps
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
+  <Step title="Sign in with Discord">
+    Head to [kovahub.app/login](https://kovahub.app/login) and click **Continue with Discord**. Kova Hub uses Discord OAuth exclusively — there's no separate account or password to create. After you authorise the connection in Discord, you'll be redirected straight to your dashboard.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
 
-    ```bash
-    your-cli init
-    ```
+  <Step title="Create your server">
+    Once you land on the dashboard, click **Create Server**. Give your server a name that matches your ER:LC community — this is what your members will see when they join. Your new server is ready immediately; no approval or waiting period required.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+  <Step title="Invite your community">
+    From your server's overview page, copy the **server invite link** and share it with your members. Anyone who joins through the link will be able to log in with their own Discord account and access the CAD panel under the role permissions you configure.
+  </Step>
+
+  <Step title="Connect the PRC API">
+    Go to **Manage Server → Integrations** and paste your PRC API key into the designated field. Kova Hub polls the PRC API every second, so once your key is saved, the live player map and real-time unit positions will appear on the dispatch board the next time an active session is running.
+  </Step>
+
+  <Step title="Configure the Discord audit log">
+    Still in **Manage Server → Integrations**, connect a Discord channel for event logging. Kova Hub will post an entry to that channel every time a record is created, updated, or deleted — giving you a complete, timestamped audit trail without any extra setup.
+  </Step>
+
+  <Step title="Start dispatching">
+    Open the **CAD panel** from your server dashboard and go live. Dispatchers can begin managing calls and tracking units immediately. Officers can open the Police MDT to run plate lookups, issue BOLOs, and file citations right away.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## What's next?
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+Now that your server is up and running, explore the features in more detail:
+
+<CardGroup cols={3}>
+  <Card title="Dispatch Board" icon="tower-broadcast" href="/features/dispatch">
+    Learn how to manage active calls, assign units, and keep your dispatch board organised during a live session.
+  </Card>
+  <Card title="Police MDT" icon="shield-halved" href="/features/police-mdt">
+    Discover plate lookups, warrants, BOLOs, arrest records, and citations in the full MDT guide.
+  </Card>
+  <Card title="PRC API Integration" icon="plug" href="/integrations/prc-api">
+    Find out how to generate your PRC API key and troubleshoot live map connectivity.
+  </Card>
+</CardGroup>

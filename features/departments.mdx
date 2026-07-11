@@ -1,0 +1,63 @@
+---
+title: "Organize Your Community with Dedicated CAD Departments"
+sidebarTitle: "Departments"
+description: "Give Police, Fire/EMS, and DOT their own CAD panels, then build custom departments and divisions with role-based access control for any community structure."
+---
+
+Kova Hub organizes your community into departments, each with its own dedicated CAD panel, unit identifiers, and access permissions. This means your police officers, firefighters, and DOT personnel all work in purpose-built environments without stepping on each other — while you retain full control over who can see and do what across every department.
+
+<Note>
+  Kova Hub ships with three dedicated CAD panel types out of the box — one each for Police, Fire/EMS, and DOT. Each panel is purpose-built for the workflows of that department and cannot be accidentally accessed by members of another department unless you explicitly grant cross-department access.
+</Note>
+
+## Built-in Departments
+
+<CardGroup cols={3}>
+  <Card title="Police" icon="shield">
+    Full access to the Live Dispatch board, Police MDT, plate lookups, warrants, BOLOs, arrest reports, and citations. Unit identifiers use the **A** (patrol) and **B** (sergeant) prefixes by default.
+  </Card>
+  <Card title="Fire / EMS" icon="truck-medical">
+    A dedicated CAD panel built for fire and medical response. Units are tracked on the live map with fire-specific statuses. Unit identifiers use the **F** prefix by default.
+  </Card>
+  <Card title="DOT" icon="road">
+    A CAD panel tailored for Department of Transportation operations — road closures, traffic management, and scene support. Unit identifiers use the **D** prefix by default.
+  </Card>
+</CardGroup>
+
+## Custom Departments
+
+Beyond the three built-in departments, you can create any number of custom departments to match your community's structure — for example, a Sheriff's Office, a State Police division, or a civilian ride-along program.
+
+**To create a custom department:**
+
+1. Go to **Settings → Departments** in your Kova Hub dashboard.
+2. Click **New Department**.
+3. Enter a department name, choose a unit identifier prefix, and select a base CAD panel type (Police, Fire/EMS, or DOT) to inherit the appropriate toolset.
+4. Click **Create Department**.
+
+Once your department exists, you can add **divisions** inside it — for example, a Traffic Division or a Detective Bureau within a Police department. Divisions inherit their parent department's CAD panel but can have their own roles and unit identifier sub-ranges.
+
+## Department Roles
+
+Each department supports fully customizable roles so you control exactly what every member can see and do.
+
+**To assign roles in a department:**
+
+1. Open the department from **Settings → Departments**.
+2. Select the **Roles** tab and click **New Role**.
+3. Name the role (for example, *Dispatcher*, *Supervisor*, *Officer*) and toggle the permissions it should carry — such as the ability to create calls, issue warrants, manage other units, or access logs.
+4. Save the role, then assign it to members from the **Members** tab.
+
+Members without an assigned role default to read-only access for that department. Removing a member from a department immediately revokes their CAD panel access.
+
+## CAD Panel Types
+
+Each base panel type is optimized for the workflows of its department:
+
+| Panel Type | Primary tools |
+|------------|--------------|
+| **Police** | Dispatch board, MDT (lookups, warrants, BOLOs, arrests, citations), unit map |
+| **Fire / EMS** | Dispatch board, medical/fire call types, unit map with fire-specific statuses |
+| **DOT** | Dispatch board, road closure management, traffic coordination tools, unit map |
+
+When you create a custom department, it inherits all the tools of its chosen base panel type. You can restrict individual tools per role so that, for example, only supervisors can close calls or only detectives can issue warrants.

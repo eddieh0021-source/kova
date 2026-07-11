@@ -1,0 +1,79 @@
+---
+title: "Setting Up Your Kova Hub Server for ER:LC"
+sidebarTitle: "Server Setup"
+description: "Create and configure an isolated Kova Hub server for your ER:LC community, including departments, integrations, and data retention settings."
+---
+
+A Kova Hub **server** is a fully isolated workspace for your ER:LC roleplay community. It holds your departments, member records, session logs, and integrations — all completely separate from every other community on the platform. You create one server per community so that your data, roles, and settings never mix with anyone else's.
+
+<Note>
+  Every Kova Hub server is fully isolated. Members, roles, session data, and
+  integrations from one server are never visible to or shared with another.
+</Note>
+
+## Creating a server
+
+Follow these steps to get your community's workspace up and running.
+
+<Steps>
+  <Step title="Log in with Discord">
+    Go to [kovahub.app/login](https://kovahub.app/login) and authenticate with
+    your Discord account. Kova Hub uses Discord OAuth for identity — no separate
+    password is required.
+  </Step>
+  <Step title="Create a new server">
+    From your dashboard, click **Create Server**. This provisions a fresh,
+    isolated workspace with no pre-existing data.
+  </Step>
+  <Step title="Name your server">
+    Give the server a name that matches your ER:LC community so members
+    recognise it immediately when they log in.
+    <Tip>
+      Use the exact name of your ER:LC group or Discord server (for example,
+      "Liberty County PD Roleplay"). Consistent naming avoids confusion when
+      members receive their invite link.
+    </Tip>
+  </Step>
+  <Step title="Configure your departments">
+    Add the departments your community uses — Police, Fire/EMS, DOT, or any
+    custom department that fits your server structure. You can add, edit, or
+    remove departments at any time from the **Manage Server** area.
+  </Step>
+</Steps>
+
+## Server settings overview
+
+Everything you need to run your community lives in **Manage Server**. From there you can:
+
+- **Departments** — create and organise the divisions your members belong to.
+- **Roles & Permissions** — define what each role can see and do inside the CAD panel.
+- **Members** — view, assign, and remove members across departments.
+- **Integrations** — connect external services such as the PRC API and Discord audit log.
+- **General** — update your server name or delete the server entirely.
+
+As the server owner you are responsible for configuration, moderation, and all content within your server.
+
+## Integrations
+
+Kova Hub supports two key integrations that extend your CAD beyond the browser:
+
+<CardGroup cols={2}>
+  <Card title="PRC API" icon="plug">
+    Link your ER:LC private server using your PRC API key so Kova Hub can read
+    live in-game data. Configure this under **Manage Server → Integrations**.
+    See the [PRC API integration guide](/integrations/prc-api) for full setup
+    steps.
+  </Card>
+  <Card title="Discord Audit Log" icon="list-check">
+    Forward CAD activity — calls, warrants, unit assignments — to a Discord
+    channel of your choice for moderation and record-keeping. Configure this
+    under **Manage Server → Integrations**. See the [Discord audit log
+    guide](/integrations/discord-audit-log) for full setup steps.
+  </Card>
+</CardGroup>
+
+## Data and retention
+
+Kova Hub retains all server data — member records, session logs, department configurations, and integration settings — for as long as your server exists. No data expires on its own.
+
+If you delete your server, **all associated data is permanently removed**, including member records and account data tied to that server. This action cannot be undone, so export any records you need before proceeding.

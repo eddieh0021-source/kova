@@ -1,0 +1,58 @@
+---
+title: "Route 911 Calls from ER:LC to Your Dispatch Board"
+sidebarTitle: "911 Webhook"
+description: "Use PRC's Event Webhook to push 911 calls from ER:LC directly to your Kova Hub dispatch board the instant a civilian dials in-game."
+---
+
+When a civilian dials 911 in your ER:LC game server, you want that call hitting your dispatchers immediately — not after a polling delay. The PRC Event Webhook makes that possible. Instead of Kova Hub asking PRC for updates, PRC pushes the 911 event directly to Kova Hub the moment it happens in-game. Your dispatchers see the call appear on the board and hear the alert chime without any lag, letting them respond before a caller even finishes speaking.
+
+## How it works
+
+The 911 webhook uses a push model: your ER:LC game server is configured with a Kova Hub webhook URL, and every time a civilian submits a 911 call in-game, PRC sends that event payload instantly to Kova Hub. There is no polling interval — delivery is triggered by the in-game action itself.
+
+This means:
+
+- **Zero polling delay.** The call arrives at the dispatch board as soon as ER:LC processes the 911 submission.
+- **No extra load on the PRC API.** The webhook runs independently of the PRC API key you may have connected for live map data.
+- **Automatic routing.** Kova Hub receives the payload, formats it as a CAD call entry, and places it on the active dispatch board.
+
+<Info>
+  The 911 webhook and the PRC API key are two separate integrations. The PRC API key enables the live map by letting Kova Hub poll for player and vehicle data. The 911 webhook enables instant call routing by letting PRC push inbound 911 events to Kova Hub. You can use one, both, or neither — they don't depend on each other.
+</Info>
+
+## Setting up the webhook
+
+<Steps>
+  <Step title="Open Manage Server → Integrations in Kova Hub">
+    In Kova Hub, navigate to **Manage Server** in the left sidebar, then select the **Integrations** tab. Locate the **911 Webhook** section.
+  </Step>
+  <Step title="Copy your Kova Hub webhook URL">
+    Kova Hub generates a unique webhook URL for your server. Click **Copy** next to the URL to copy it to your clipboard. Keep this URL private — it is specific to your Kova Hub server.
+  </Step>
+  <Step title="Paste the URL into your ER:LC server settings">
+    Open your ER:LC game server settings panel and navigate to the **Event Webhook** configuration field. Paste your Kova Hub webhook URL into that field and save the settings in ER:LC. PRC will now send 911 events to Kova Hub automatically.
+  </Step>
+</Steps>
+
+## What dispatchers see
+
+Once the webhook is active, every in-game 911 call flows to your dispatch board in real time:
+
+<Note>
+  When a 911 call arrives via the webhook, Kova Hub plays an audible chime for all active dispatchers on the board and displays the call entry immediately — no manual refresh needed. Dispatchers can claim and respond to the call directly from the new entry.
+</Note>
+
+Each incoming 911 call entry includes the information PRC captures from the in-game submission, such as the caller's reported location and the nature of the emergency. Dispatchers can then assign units, set a priority level, and manage the call through the full Kova Hub CAD workflow.
+
+## Difference from the PRC API
+
+It's easy to confuse the 911 webhook with the PRC API key since both involve your ER:LC server. Here's a clear breakdown:
+
+| | PRC API key | 911 Webhook |
+|---|---|---|
+| **Direction** | Kova Hub polls PRC (pull) | PRC pushes to Kova Hub (push) |
+| **Purpose** | Live map — player positions, vehicles, plates | Call routing — delivers 911 calls to the dispatch board |
+| **Update method** | Every 1 second on a polling cycle | Instantly on each in-game 911 submission |
+| **Where you configure it** | Kova Hub: Manage Server → Integrations | ER:LC server settings: Event Webhook field |
+
+For the fullest dispatch experience, connect both: the PRC API gives your team the live map, and the 911 webhook ensures calls arrive the moment they're made.

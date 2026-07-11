@@ -1,0 +1,55 @@
+---
+title: "Frequently Asked Questions about Kova Hub"
+sidebarTitle: "FAQ"
+description: "Find answers to the most common questions about Kova Hub — the free, full-featured CAD platform built for ER:LC communities."
+---
+
+Whether you're setting up your first server or fine-tuning an existing deployment, this page covers the questions the Kova Hub community asks most often. If you don't find what you're looking for here, head over to the [Contact](/contact) page and the team will get you sorted.
+
+<AccordionGroup>
+  <Accordion title="Is Kova Hub really free?">
+    Yes — 100%, always. Kova Hub was built specifically to give ER:LC communities a polished, professional CAD experience without any monthly costs or premium tiers. Every feature available on the platform is free for every server, with no paywalls and no feature gating.
+  </Accordion>
+
+  <Accordion title="How does the live map work?">
+    The live map pulls real-time player positions, vehicles, and plates directly from PRC's API. To enable it, navigate to **Manage Server → Integrations** and paste your ER:LC PRC API key. Kova Hub polls the API every second, so the map stays up to date as units move around the map.
+  </Accordion>
+
+  <Accordion title="What is the 911 Event Webhook?">
+    PRC's Event Webhook is a push-based integration that sends 911 calls to Kova Hub the instant a civilian dials in-game — no polling needed. The call appears on the dispatch board automatically and plays a chime to alert active dispatchers. To set it up, copy the webhook URL from **Manage Server → Integrations** and paste it into your PRC server's webhook settings.
+  </Accordion>
+
+  <Accordion title="Does Kova Hub work with Discord?">
+    Yes. You log in to Kova Hub using Discord OAuth, so no separate account or password is required. Kova Hub also supports a full audit log that posts a message to a Discord channel of your choice every time a significant action occurs — unit assignments, record updates, call closures, and more. You can filter exactly which event types get posted so your audit channel stays signal-rich.
+  </Accordion>
+
+  <Accordion title="What departments are supported?">
+    Kova Hub ships with dedicated CAD panels for **Police**, **Fire/EMS**, and **DOT** out of the box. Beyond those, you can create fully custom departments and divisions, assign Discord roles to control access, and manage membership per department — so your server's structure is reflected accurately in the CAD.
+  </Accordion>
+
+  <Accordion title="How many servers can I create?">
+    There is no hard limit on the number of Kova Hub servers you can create or join. Each server is isolated with its own settings, departments, records, and integrations. You can be a member or owner of multiple servers at the same time and switch between them from the dashboard.
+  </Accordion>
+
+  <Accordion title="Do I need a Roblox account to use Kova Hub?">
+    A Roblox account is not required to log in or manage your CAD server. However, linking your Roblox account via Roblox OAuth is recommended if you want your in-game identity (username and avatar) to appear on civilian and character records. Server owners can require Roblox linking for their members as part of their onboarding process.
+  </Accordion>
+
+  <Accordion title="What happens if I lose access to my Discord account?">
+    Because Kova Hub uses Discord OAuth for authentication, losing access to your Discord account means losing access to your Kova Hub account as well. If this happens, recover your Discord account first through Discord's official account recovery flow. Once you're back in, your Kova Hub data will be waiting. If you're a server owner and need urgent assistance, reach out via [support@kovahub.app](mailto:support@kovahub.app) with proof of ownership.
+  </Accordion>
+
+  <Accordion title="How do I delete my data?">
+    You can request deletion of your account data at any time. Logging out removes your active session. To permanently delete your account and associated data, contact the Kova Hub team through the [Kova Discord](https://discord.gg/qpb2pnBHS4) or via email at [support@kovahub.app](mailto:support@kovahub.app). Server owners can also remove their server entirely, which deletes all server-level configuration and records. See the [Privacy Policy](/legal/privacy-policy) for full details on data retention.
+  </Accordion>
+
+  <Accordion title="Is my data shared with anyone?">
+    Kova Hub does not sell, rent, or trade your data. Information is shared only within the normal operation of your server — for example, server owners and members can see relevant CAD records. If you configure third-party webhooks, data flows to those endpoints as you set them up. See the full [Privacy Policy](/legal/privacy-policy) for a complete breakdown.
+  </Accordion>
+
+  <Accordion title="What browsers and devices are supported?">
+    Kova Hub is a web-based platform that works in any modern browser (Chrome, Firefox, Edge, Safari). For the best dispatch experience — especially on the live map — a desktop or laptop with a reasonably large screen is recommended. Mobile browsers can access the platform but the dispatch board and map are optimized for larger viewports.
+  </Accordion>
+</AccordionGroup>
+
+Still have a question that isn't covered here? [Contact the Kova Hub support team](/contact) and we'll help you out.

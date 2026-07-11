@@ -1,0 +1,71 @@
+---
+title: "Signing In to Kova Hub with Discord"
+sidebarTitle: "Authentication"
+description: "Kova Hub uses Discord OAuth exclusively. Learn how login works, what permissions are requested, and how your session is managed."
+---
+
+Kova Hub authenticates every user through Discord OAuth — there are no passwords, no separate email accounts, and nothing extra to sign up for. If you have a Discord account, you already have everything you need to log in.
+
+<Note>
+  Kova Hub never stores passwords. Authentication is handled entirely by Discord; Kova Hub only receives the profile information you explicitly authorise.
+</Note>
+
+## How login works
+
+<Steps>
+  <Step title="Go to the login page">
+    Navigate to [kovahub.app/login](https://kovahub.app/login) in your browser.
+  </Step>
+
+  <Step title="Click Continue with Discord">
+    Click the **Continue with Discord** button. You'll be redirected to Discord's official OAuth authorisation page.
+  </Step>
+
+  <Step title="Authorise Kova Hub">
+    Review the permissions Discord lists and click **Authorise**. You must be logged in to the Discord account you want to use with Kova Hub at this point.
+  </Step>
+
+  <Step title="Land on your dashboard">
+    After you authorise, Discord redirects you back to Kova Hub and you arrive on your dashboard, fully logged in. No confirmation email, no extra steps.
+  </Step>
+</Steps>
+
+## What Discord permissions are requested?
+
+Kova Hub requests only what it needs to identify you and support server features. The table below describes each permission:
+
+| Permission | Why Kova Hub needs it |
+|---|---|
+| **Username & avatar** | Displays your identity across the CAD panel and audit log entries. |
+| **User ID** | Uniquely identifies your account so your server memberships and roles persist across sessions. |
+| **Guild memberships** | Lets Kova Hub verify which Discord servers you belong to when you join or manage a Kova Hub server. |
+
+Kova Hub does not request access to your messages, friends list, DMs, or any other Discord data beyond what is listed above.
+
+## Sessions
+
+Once you log in, Kova Hub creates a secure session so you don't have to re-authorise on every visit.
+
+- **Session duration:** Your session lasts for **7 days** from the time you last interacted with Kova Hub.
+- **Automatic expiry:** After 7 days of inactivity your session expires automatically. You'll be prompted to log in with Discord again the next time you visit.
+- **Logging out:** Clicking **Log Out** ends your session immediately and removes your session data from Kova Hub's servers. Your Discord account itself is unaffected.
+
+The session is stored in an HTTP-only, secure cookie named `connect.sid`. This cookie is never accessible to browser JavaScript, which protects your session from cross-site scripting attacks.
+
+## Troubleshooting login issues
+
+<Accordion title="I can't authorise — the Discord page shows an error">
+  This usually means the Discord account you're using is banned, suspended, or flagged by Discord for a policy violation. Kova Hub cannot override Discord's restrictions. Try logging in with a different Discord account, or contact Discord support if you believe your account was restricted in error.
+</Accordion>
+
+<Accordion title="I authorise on Discord but get sent back to the Kova Hub login page">
+  A stale or corrupted session cookie can interrupt the OAuth flow. Clear your browser's cookies for `kovahub.app` and `discord.com`, then try again. In most browsers you can do this via **Settings → Privacy → Clear browsing data** or by right-clicking the padlock icon in the address bar.
+</Accordion>
+
+<Accordion title="I logged in with the wrong Discord account">
+  Kova Hub uses whichever Discord account is currently logged in to your browser. To switch accounts, open a new browser tab, go to [discord.com](https://discord.com), log out of the current account, and log in with the correct one. Then return to [kovahub.app/login](https://kovahub.app/login) and click **Continue with Discord** again.
+</Accordion>
+
+<Accordion title="My session keeps expiring sooner than expected">
+  Sessions expire after **7 days of inactivity**. If you visit Kova Hub regularly but are still being logged out, check whether your browser is configured to clear cookies on close or whether a browser extension is deleting the `connect.sid` cookie. Disabling aggressive cookie-clearing for `kovahub.app` should resolve the issue.
+</Accordion>

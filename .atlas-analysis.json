@@ -1,32 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
-  "name": "Kova Hub",
+  "projectType": "saas",
+  "projectName": "Kova Hub",
+  "projectDescription": "A free, full-featured Computer Aided Dispatch (CAD) platform built specifically for ER:LC roleplay communities on Roblox.",
   "theme": "luma",
-  "logo": {
-    "light": "https://media.brand.dev/ef2497ab-bd13-4cb1-8114-9ecde5558ecf.svg",
-    "dark": "https://media.brand.dev/ef2497ab-bd13-4cb1-8114-9ecde5558ecf.svg"
-  },
-  "favicon": "https://icons.duckduckgo.com/ip3/kovahub.app.ico",
-  "colors": {
-    "primary": "#5865F2",
-    "light": "#7983F5",
-    "dark": "#4752C4"
-  },
-  "font": {
-    "headings": {
-      "family": "Plus Jakarta Sans"
-    },
-    "body": {
-      "family": "Plus Jakarta Sans"
-    }
-  },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Get Started Free",
-      "href": "https://kovahub.app/login"
-    }
-  },
+  "primaryColor": "#5865F2",
+  "lightColor": "#7983F5",
+  "darkColor": "#4752C4",
   "navigation": {
     "tabs": [
       {
@@ -89,9 +68,26 @@
       }
     ]
   },
-  "footer": {
-    "socials": {
-      "discord": "https://discord.gg/qpb2pnBHS4"
-    }
-  }
+  "keyFeatures": [
+    "Live dispatch board with real-time call and unit management",
+    "Police MDT with plate lookup, warrants, BOLOs, and arrest records",
+    "Discord OAuth login and full audit log integration",
+    "PRC API integration for live player positions on dispatch map",
+    "911 Event Webhook for instant in-game call routing",
+    "Multi-department support (Police, Fire/EMS, DOT) with custom roles",
+    "Completely free — no paywalls, no premium tiers",
+    "Per-event Discord log filtering",
+    "Bodycam and radio features during active sessions",
+    "Session isolation and role-based access control"
+  ],
+  "publicApiSurface": [
+    "Discord OAuth login (/auth/discord)",
+    "PRC API key integration (Manage Server → Integrations)",
+    "911 Event Webhook (PRC Event Webhook → Kova Hub)",
+    "Discord audit log webhook (per-event filtering)",
+    "Dispatch board (calls, unit status, priorities)",
+    "Police MDT (plate lookup, warrants, BOLOs, citations, arrest reports)",
+    "Server configuration and department management",
+    "Role and permission management per department"
+  ]
 }

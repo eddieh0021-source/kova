@@ -1,0 +1,83 @@
+---
+title: "Managing Members on Your Kova Hub Server"
+sidebarTitle: "Members"
+description: "Invite community members to your Kova Hub server, assign them to departments, monitor active sessions, and remove access when needed."
+---
+
+Members are the people who use your Kova Hub CAD — dispatchers, officers, firefighters, and anyone else in your ER:LC community. You control who joins, which department they belong to, and what they can do. Every member authenticates with Discord, so there are no separate passwords to manage on your end.
+
+## Inviting members
+
+Share your server's unique invite link to bring community members on board. Anyone who follows the link and logs in with Discord is added to your server automatically.
+
+<Steps>
+  <Step title="Find your invite link">
+    Open **Manage Server** and navigate to the **Members** tab. Your server's
+    invite link is displayed at the top of the page.
+  </Step>
+  <Step title="Share the link">
+    Post the invite link in your community's Discord server — a dedicated
+    onboarding channel works well so new members can find it easily.
+  </Step>
+  <Step title="Member logs in with Discord">
+    When a member follows the link, they are prompted to log in with Discord
+    OAuth. Kova Hub uses their Discord identity to create their account; no
+    additional sign-up form is required.
+  </Step>
+  <Step title="Member appears in your roster">
+    Once logged in, the new member appears in your **Members** list with a
+    default unassigned status. Assign them to a department to grant CAD access.
+  </Step>
+</Steps>
+
+<Tip>
+  Pin the invite link in a dedicated `#cad-access` channel and remind members
+  that they must use the same Discord account they use for your community
+  server.
+</Tip>
+
+## Assigning departments
+
+A member without a department assignment cannot access any CAD panel. Assigning them to a department — and giving them a role within it — is what unlocks their access.
+
+1. In **Manage Server**, open the **Members** tab.
+2. Click the member's name to open their profile.
+3. Under **Department**, choose from your available departments (for example, Police, Fire/EMS, DOT, or any custom department you have created).
+4. Select an appropriate **Role** within that department to set their permission level.
+5. Save the changes — the member can now access the relevant CAD panel on their next login.
+
+You can assign a member to more than one department if their role in your community spans multiple services. Each department assignment carries its own independent role and permission set.
+
+<Note>
+  Not sure which departments to create? See [Server Setup](/management/server-setup)
+  for guidance on configuring departments when you first build your server.
+</Note>
+
+## Managing active members
+
+During a live CAD session you can see which members are currently on duty directly from the session view. Active session data lets you:
+
+- See which units are signed on across each department in real time.
+- Monitor call assignments and unit availability without leaving the CAD panel.
+- Review session logs after a session ends to audit activity or resolve disputes.
+
+Session data is stored against your server and is retained as long as the server exists, giving you a running history of community activity.
+
+## Removing members
+
+If someone leaves your community or should no longer have CAD access, remove them from your server's member list.
+
+<Warning>
+  Removing a member **immediately revokes their CAD access**. They will be
+  signed out of any active session and will not be able to rejoin until they
+  are re-invited. Make sure you intend to cut access before confirming the
+  removal.
+</Warning>
+
+To remove a member:
+
+1. Go to **Manage Server → Members**.
+2. Click the member's name to open their profile.
+3. Select **Remove Member** and confirm the action.
+
+The member's session history remains in your logs for record-keeping, but they lose all active permissions and department assignments immediately.

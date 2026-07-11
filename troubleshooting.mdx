@@ -1,0 +1,140 @@
+---
+title: "Troubleshooting Common Kova Hub Issues"
+sidebarTitle: "Troubleshooting"
+description: "Step-by-step fixes for the most common Kova Hub issues — login problems, live map errors, dispatch board gaps, and audit log failures."
+---
+
+Most issues with Kova Hub come down to a misconfigured integration, a stale session, or a permission setting that needs a small adjustment. Work through the relevant section below to resolve your issue. Each step is ordered from quickest to most involved — try them in sequence before moving on.
+
+## Login & Authentication
+
+<AccordionGroup>
+  <Accordion title="Can't log in with Discord">
+    1. Make sure you are logged in to the correct Discord account in your browser before clicking **Login with Discord**.
+    2. Check that you have not blocked Kova Hub in your Discord **Authorized Apps** settings (**User Settings → Authorized Apps**). If Kova Hub appears there with revoked permissions, remove it entirely and try logging in again to re-authorize.
+    3. Clear your browser cookies and cache, then attempt the login flow again.
+    4. Try an incognito or private browsing window to rule out a browser extension interfering with the OAuth redirect.
+    5. Confirm that [discord.com](https://discord.com) is not blocked by a firewall, VPN, or network-level content filter on your connection.
+
+    <Warning>
+      If you see an **"Access Denied"** or **"OAuth error"** message from Discord during the login flow, your Discord account may have two-factor authentication changes pending or an active security hold. Resolve those in Discord first before retrying.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Redirected back to the login page after authorizing">
+    This usually means your session cookie was not saved correctly.
+
+    1. Ensure your browser accepts cookies from Kova Hub. Third-party cookie blocking or aggressive privacy extensions can prevent the `connect.sid` session cookie from being set.
+    2. Disable any browser extensions that intercept or modify cookies (privacy badgers, ad blockers with cookie rules) and try again.
+    3. If you are on Safari, go to **Settings → Privacy** and make sure **"Prevent cross-site tracking"** is not blocking the OAuth redirect domain.
+    4. Check that your system clock is accurate — an incorrect clock can cause cookie expiry validation to fail immediately.
+  </Accordion>
+
+  <Accordion title="Logged into the wrong Discord account">
+    Kova Hub authenticates whichever Discord account is active in your browser at the time you click **Login with Discord**.
+
+    1. Log out of Kova Hub first using the account switcher in the top-right corner.
+    2. Go to [discord.com](https://discord.com) and switch to (or log in to) the correct Discord account.
+    3. Return to Kova Hub and log in again — you will be authenticated as the newly active Discord account.
+
+    If you need to transfer server ownership from one account to another, contact support after you have access to both accounts.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Live Map
+
+<AccordionGroup>
+  <Accordion title="Live map not showing any players">
+    1. Confirm your ER:LC server is currently running and has players in it — the map only shows live data.
+    2. Navigate to **Manage Server → Integrations** and verify your PRC API key is saved. If the field is empty, paste your key and save.
+    3. Double-check the API key by copying it directly from your PRC server panel to rule out a typo or trailing space.
+    4. Ensure your PRC server's API access is enabled in PRC settings — some server owners turn it off and forget.
+    5. Wait up to 10 seconds after saving a new key for the first poll cycle to complete, then refresh the map.
+  </Accordion>
+
+  <Accordion title="Players appearing at wrong or frozen positions">
+    1. The live map polls every second. If positions look frozen for more than a few seconds, your browser tab may have been throttled by the browser to save resources — bring the Kova Hub tab to the foreground and check again.
+    2. Check your network connection. A brief disconnect can cause the polling loop to pause; it resumes automatically once connectivity is restored.
+    3. If positions are consistently offset (showing players in the wrong area of the map), your PRC API key may belong to a different server than the one currently running. Re-verify the key in **Manage Server → Integrations**.
+
+    <Warning>
+      If all units appear stuck at coordinates (0, 0) on the map, PRC's API may be returning null position data for your server. This is a PRC-side issue — check the PRC status page or their Discord for any known outages before troubleshooting further on the Kova Hub side.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="PRC API key rejected or showing an error">
+    1. API keys are case-sensitive — copy and paste directly rather than retyping.
+    2. Regenerating your key in the PRC panel immediately invalidates the old one. If you recently regenerated, update the key in **Manage Server → Integrations**.
+    3. Confirm you are using the **API Key** field and not the webhook secret or any other credential from the PRC panel.
+    4. If the error persists after pasting a fresh key, try removing the key, saving, then re-entering it and saving again to force a clean update.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Dispatch Board
+
+<AccordionGroup>
+  <Accordion title="Calls not appearing on the dispatch board">
+    1. Confirm at least one dispatcher is active in the current session — calls route to active dispatch sessions.
+    2. Verify that the 911 Event Webhook is configured in PRC (see below). Without the webhook, Kova Hub cannot receive incoming calls.
+    3. Check that the correct Kova Hub server is selected in your dashboard — it is possible to be looking at a different server's board.
+    4. Refresh the dispatch board. In rare cases a stale WebSocket connection can cause the board to stop receiving updates; a page refresh re-establishes it.
+  </Accordion>
+
+  <Accordion title="911 webhook not routing calls to Kova Hub">
+    1. In **Manage Server → Integrations**, copy the full webhook URL provided by Kova Hub.
+    2. Paste that URL into the **Event Webhook** field in your PRC server settings and save.
+    3. Make sure you are using the **Event Webhook** field specifically — not the audit log webhook or any other PRC webhook field.
+    4. Test the integration by having a player dial 911 in-game. The call should appear on the board within one to two seconds.
+
+    <Warning>
+      PRC sends webhook payloads with an HMAC signature. Kova Hub verifies this signature to protect against spoofed calls. If you have copied a webhook URL from a different Kova Hub server by mistake, signature verification will fail silently. Always use the webhook URL generated for your specific Kova Hub server.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Unit status not updating on the board">
+    1. Confirm the unit in question is signed on to the CAD in the current active session.
+    2. Ask the unit to manually refresh their CAD panel — a stale connection will not push status changes to dispatch.
+    3. Check whether the issue affects all units or just one. If it is isolated to one unit, that unit's session has likely timed out; they should sign out and sign back in.
+    4. If all units are frozen, the server's WebSocket connection may have dropped. Refreshing the dispatch board reconnects automatically.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Discord Audit Log
+
+<AccordionGroup>
+  <Accordion title="Audit log not posting to the configured channel">
+    1. Go to **Manage Server → Integrations** and confirm the Discord webhook URL for the audit log channel is saved and correct.
+    2. Verify the webhook still exists in Discord: open the channel in Discord → **Edit Channel → Integrations → Webhooks**. If it was deleted, create a new one and update the URL in Kova Hub.
+    3. Make sure the channel is not set to read-only or otherwise restricted in a way that would block webhook messages.
+    4. Check that your Discord server has not hit Discord's rate limit for that channel. High-volume audit activity can occasionally trigger Discord's own throttling.
+  </Accordion>
+
+  <Accordion title="Some events are missing from the audit log">
+    Kova Hub supports per-event filtering so you can choose which action types post to your audit channel.
+
+    1. Go to **Manage Server → Integrations → Audit Log Settings** and review which event types are enabled.
+    2. Re-enable any event categories you want to capture and save your settings.
+    3. Note that events are only logged going forward — there is no retroactive replay of past events.
+  </Accordion>
+
+  <Accordion title="Audit log bot not appearing in the server or messages showing 'Unknown Webhook'">
+    The audit log uses a standard Discord webhook, not a bot — no bot needs to be invited to your server.
+
+    <Warning>
+      If audit log messages show **"This integration has been deleted"** or stop appearing entirely, someone with Manage Webhooks permission in your Discord server may have deleted the webhook. Recreate the webhook in the target channel and update the URL in **Manage Server → Integrations** immediately to restore logging.
+    </Warning>
+
+    1. Confirm the webhook URL in Kova Hub belongs to the correct Discord server and channel.
+    2. If you recently transferred the Discord server to a new owner, re-verify all webhooks — server transfers can invalidate existing integrations in some configurations.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+If you've worked through the relevant steps and the issue is still happening, [contact the Kova Hub support team](/contact) — include a brief description of the problem, the steps you've already tried, and any error messages you see, so the team can help you as quickly as possible.

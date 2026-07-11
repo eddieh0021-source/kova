@@ -1,0 +1,62 @@
+---
+title: "Coordinate Live Incidents with the Dispatch Board"
+sidebarTitle: "Live Dispatch"
+description: "Create calls, assign units, and coordinate live scenes from a single real-time board — with instant 911 routing from your ER:LC server."
+---
+
+The Live Dispatch board is your command center for every active incident. From here you can create and prioritize calls, assign units, monitor their statuses on a live map, and review everything that happened after the scene clears — all without leaving a single page.
+
+## The Calls Board
+
+Every incident starts as a call. To create one, click **New Call** on the dispatch board, fill in the call type, location, and priority, then submit. The call appears on the board immediately for all dispatchers to see.
+
+**Call priorities** let you communicate urgency at a glance:
+
+| Priority | When to use |
+|----------|-------------|
+| **High** | Immediate threat to life or safety — shots fired, active pursuit, major accident |
+| **Medium** | Situation requires a prompt response but is not immediately life-threatening |
+| **Low** | Non-urgent requests, minor infractions, or follow-up assignments |
+
+Calls move through the following statuses as the incident progresses:
+
+- **Pending** — Call has been created but no units have been assigned yet.
+- **Active** — At least one unit is assigned and responding.
+- **On Scene** — One or more assigned units have marked themselves on scene.
+
+You can update a call's status manually at any time, or let it update automatically as units check in.
+
+## Managing Units
+
+Every unit in your department shows up in the **Active Units** panel with its identifier, officer name, and current status. Identifiers follow your department's prefix scheme — for example, `A-1` for a patrol officer or `B-3` for a sergeant.
+
+Use the table below to understand what each unit status means:
+
+| Status | Meaning |
+|--------|---------|
+| **Available** | Unit is on duty and ready to take a call |
+| **En Route** | Unit has been assigned and is heading to the scene |
+| **On Scene** | Unit has arrived at the incident location |
+| **Busy** | Unit is occupied and should not receive new assignments |
+
+To assign a unit to an open call, open the call card and select the unit from the **Assign Units** dropdown. You can assign multiple units to a single call and organize them into **unit groups** for larger incidents that need coordinated teams.
+
+## 911 Auto-Routing
+
+When a civilian dials 911 inside your ER:LC server, the call travels through the PRC webhook directly to your dispatch board — no manual entry required.
+
+<Tip>
+  911 webhook calls appear on your board **instantly** the moment they are placed in-game. There is no polling interval or refresh needed — your board plays an audible chime and the new call populates in real time.
+</Tip>
+
+The incoming call pre-fills the call type and caller information pulled from the in-game event, so your dispatchers can assign units and respond within seconds. You can still edit the auto-generated call details before or after unit assignment.
+
+## Call Logs
+
+Every call — whether created manually or routed from 911 — is saved to the **Call Logs** automatically when it is closed. To review historical calls, open the **Logs** tab on the dispatch board.
+
+From the call log you can:
+
+- Filter by date range, call type, or assigned unit
+- Re-open a closed call if the incident resumes
+- Export logs for use in after-action reports or community records

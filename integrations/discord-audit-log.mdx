@@ -1,0 +1,53 @@
+---
+title: "Set Up the Discord Audit Log for Your Server"
+sidebarTitle: "Discord Audit Log"
+description: "Connect Kova Hub to a Discord channel and get a full, filterable audit trail of every CAD session, call, panic, role change, and department update."
+---
+
+Kova Hub can post a full audit trail of your server's activity to any Discord channel you choose. Every significant action — dispatched calls, unit panics, role assignments, department changes, and more — generates a formatted message in your designated channel the moment it happens. This gives your staff team a persistent, searchable record outside of the CAD itself, useful for after-action reviews, accountability, and keeping leadership in the loop without requiring them to monitor the live board.
+
+## How it works
+
+Once you connect a channel, Kova Hub BOT joins your Discord server and begins posting structured messages for each event you've enabled. Each message includes the event type, relevant identifiers (unit callsign, officer name, division), and a timestamp. You control exactly which event types post to which channel using per-event filters, so you can route critical alerts like unit panics to a high-visibility channel while sending routine session logs elsewhere.
+
+<Note>
+  Kova Hub uses Discord OAuth to let staff members log in to the CAD with their Discord accounts. The audit log is a separate feature — authorizing the audit log bot does not affect how login works, and enabling Discord login does not automatically set up the audit log. You configure each independently.
+</Note>
+
+## Connecting a channel
+
+<Steps>
+  <Step title="Open Manage Server → Integrations → Discord">
+    In Kova Hub, navigate to **Manage Server** in the left sidebar, select the **Integrations** tab, then click the **Discord** section.
+  </Step>
+  <Step title="Authorize Kova Hub BOT in your Discord server">
+    Click **Connect Discord**. Kova Hub will prompt you to authorize **Kova Hub BOT** in your Discord server. You must have **Manage Server** permissions in the Discord server to complete this step. Select your server from the dropdown and confirm the authorization. Kova Hub BOT will join your server automatically.
+  </Step>
+  <Step title="Select the channel to post to">
+    After authorization, Kova Hub loads your server's channel list. Select the Discord channel where you want audit log messages to appear. You can change this channel at any time from the same Integrations page.
+  </Step>
+  <Step title="Configure per-event filters">
+    By default, all event types are enabled. Use the per-event toggles to turn individual event types on or off for your selected channel. You can also add a second channel and configure a different filter set — for example, sending only unit panics to a staff-alerts channel.
+  </Step>
+</Steps>
+
+## Logged events
+
+Kova Hub BOT can post messages for the following event types:
+
+| Event | Description |
+|---|---|
+| **CAD Session Started** | A unit opens an active CAD session, logged with their callsign, name, and division (e.g., *A-1 · Johnson · Patrol Division*) |
+| **Call Created** | A new call is created on the dispatch board, including the nature, location, and priority level (e.g., *Shots fired — Downtown Ave · Priority: High*) |
+| **Unit Panic** | A unit triggers their panic alarm, logged with callsign and name for immediate staff attention (e.g., *B-3 · Martinez triggered panic alarm*) |
+| **Role Changed** | A staff member's CAD role or permission level is updated, with the previous and new role recorded |
+| **Department Updated** | Changes to a department's configuration, name, or roster are recorded |
+| **BOLO Issued** | A Be On the Lookout entry is created, including the subject and reason |
+| **Warrant Issued** | A warrant is filed against a civilian, logged with the subject's name and issuing officer |
+| **Arrest Filed** | An arrest report is submitted, logged with the subject, arresting officer, and charges |
+
+## Per-event filtering
+
+You can toggle any event type on or off at any time without disconnecting the integration. To adjust your filters, go to **Manage Server → Integrations → Discord** and use the toggles next to each event type in your channel's configuration.
+
+This lets you keep your audit log channel focused. For example, you might enable every event type in a private staff-logs channel while only enabling **Unit Panic** and **Call Created** in a channel your on-duty supervisors actively monitor.

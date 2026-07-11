@@ -1,0 +1,60 @@
+---
+title: "Connect Kova Hub to Discord for Login and Audit Logs"
+sidebarTitle: "Discord Integration"
+description: "Use Discord OAuth to sign in to Kova Hub and pipe a full, filterable audit log of every CAD event straight to any channel in your server."
+---
+
+Discord sits at the center of Kova Hub's identity and logging systems. You use your Discord account to log in to Kova Hub, and you connect your Discord server to receive a real-time audit log of everything that happens inside your CAD — calls, panics, role changes, and more. This means your command staff can monitor CAD activity directly from Discord without needing to keep the dashboard open.
+
+## Discord Login
+
+Kova Hub uses Discord OAuth for authentication, so there are no separate usernames or passwords to manage. When you visit Kova Hub for the first time, click **Sign in with Discord**, authorize the application, and you are taken straight to your dashboard.
+
+Your Discord user ID is what ties your account to your department memberships and permissions inside Kova Hub. If a server administrator assigns you a role in a department, that access becomes available the next time you log in — or immediately if you are already signed in.
+
+For a full walkthrough of the login and account setup flow, see the [Authentication](/authentication) page.
+
+## Connecting a Log Channel
+
+To start receiving audit log events, you need to connect Kova Hub to a channel in your Discord server.
+
+**To connect a channel:**
+
+1. In your Discord server, go to **Server Settings → Integrations**.
+2. Under **Webhooks**, click **New Webhook**, choose the channel you want logs posted to, and copy the webhook URL.
+3. In your Kova Hub dashboard, go to **Settings → Discord**.
+4. Paste the webhook URL into the **Log Channel** field and click **Save**.
+
+<Info>
+  Log messages are posted by **Kova Hub BOT** — that is the name you will see as the author of every audit log entry in your Discord channel. Make sure the channel you choose is readable by your staff but not publicly visible, since the log includes sensitive operational details like unit names and call information.
+</Info>
+
+Once connected, Kova Hub begins posting to that channel immediately. You can connect multiple channels and route different event types to each one using per-event filtering (see below).
+
+## Audit Log Events
+
+Every significant action in Kova Hub generates an audit log event. The table below describes the events that are posted to your connected Discord channel:
+
+| Event | Description |
+|-------|-------------|
+| **CAD Session Started** | A user has logged in and opened an active CAD session |
+| **Call Created** | A dispatcher has created a new incident call on the board |
+| **Call Closed** | An active call has been closed or marked as resolved |
+| **Unit Panic** | A unit has triggered the panic button, indicating an officer in distress |
+| **Role Changed** | A member's department role has been assigned, updated, or removed |
+| **Department Updated** | A department or division has been created, renamed, or modified |
+
+Each log entry includes a timestamp, the name of the user who triggered the event, and any relevant details — for example, a Call Created entry includes the call type, priority, and assigned units.
+
+## Per-Event Filtering
+
+You do not have to send every event type to the same channel. Per-event filtering lets you route specific events to specific channels — for example, sending **Unit Panic** alerts to a high-visibility command channel while routing routine **CAD Session Started** entries to a separate low-traffic log channel.
+
+**To configure per-event filtering:**
+
+1. In your Kova Hub dashboard, go to **Settings → Discord**.
+2. Under **Event Filters**, you will see a list of every event type alongside a dropdown for the destination channel.
+3. For each event, either select one of your connected webhook channels or choose **Disabled** to suppress that event entirely.
+4. Click **Save Filters**.
+
+Changes take effect immediately — events triggered after you save will follow the new routing rules. Events that have already been posted are not affected.
