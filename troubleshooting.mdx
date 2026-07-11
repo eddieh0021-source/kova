@@ -1,7 +1,7 @@
 ---
-title: "Troubleshooting Common Kova Hub Issues"
+title: "Troubleshooting Kova Hub — Step-by-Step Issue Fixes"
 sidebarTitle: "Troubleshooting"
-description: "Step-by-step fixes for the most common Kova Hub issues — login problems, live map errors, dispatch board gaps, and audit log failures."
+description: "Step-by-step solutions for Kova Hub login problems, live map errors, dispatch board issues, and Discord audit log failures — sorted by topic."
 ---
 
 Most issues with Kova Hub come down to a misconfigured integration, a stale session, or a permission setting that needs a small adjustment. Work through the relevant section below to resolve your issue. Each step is ordered from quickest to most involved — try them in sequence before moving on.
@@ -24,7 +24,7 @@ Most issues with Kova Hub come down to a misconfigured integration, a stale sess
   <Accordion title="Redirected back to the login page after authorizing">
     This usually means your session cookie was not saved correctly.
 
-    1. Ensure your browser accepts cookies from Kova Hub. Third-party cookie blocking or aggressive privacy extensions can prevent the `connect.sid` session cookie from being set.
+    1. Ensure your browser accepts cookies from Kova Hub. Third-party cookie blocking or aggressive privacy extensions can prevent the session cookie from being set.
     2. Disable any browser extensions that intercept or modify cookies (privacy badgers, ad blockers with cookie rules) and try again.
     3. If you are on Safari, go to **Settings → Privacy** and make sure **"Prevent cross-site tracking"** is not blocking the OAuth redirect domain.
     4. Check that your system clock is accurate — an incorrect clock can cause cookie expiry validation to fail immediately.
@@ -91,7 +91,7 @@ Most issues with Kova Hub come down to a misconfigured integration, a stale sess
     4. Test the integration by having a player dial 911 in-game. The call should appear on the board within one to two seconds.
 
     <Warning>
-      PRC sends webhook payloads with an HMAC signature. Kova Hub verifies this signature to protect against spoofed calls. If you have copied a webhook URL from a different Kova Hub server by mistake, signature verification will fail silently. Always use the webhook URL generated for your specific Kova Hub server.
+      Each Kova Hub server has its own unique webhook URL. If you have copied a webhook URL from a different Kova Hub server by mistake, calls will not route correctly. Always use the webhook URL generated for your specific Kova Hub server.
     </Warning>
   </Accordion>
 

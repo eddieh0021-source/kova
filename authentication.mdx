@@ -1,7 +1,7 @@
 ---
-title: "Signing In to Kova Hub with Discord"
+title: "Kova Hub Login and Authentication: Discord OAuth Guide"
 sidebarTitle: "Authentication"
-description: "Kova Hub uses Discord OAuth exclusively. Learn how login works, what permissions are requested, and how your session is managed."
+description: "Learn how Kova Hub uses Discord OAuth to log you in, what data is collected, and how your 7-day session cookie keeps you signed in."
 ---
 
 Kova Hub authenticates every user through Discord OAuth — there are no passwords, no separate email accounts, and nothing extra to sign up for. If you have a Discord account, you already have everything you need to log in.
@@ -36,7 +36,8 @@ Kova Hub requests only what it needs to identify you and support server features
 
 | Permission | Why Kova Hub needs it |
 |---|---|
-| **Username & avatar** | Displays your identity across the CAD panel and audit log entries. |
+| **Username & display name** | Displays your identity across the CAD panel and audit log entries. |
+| **Avatar URL** | Shows your Discord profile picture alongside your name throughout the CAD interface. |
 | **User ID** | Uniquely identifies your account so your server memberships and roles persist across sessions. |
 | **Guild memberships** | Lets Kova Hub verify which Discord servers you belong to when you join or manage a Kova Hub server. |
 
